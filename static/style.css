@@ -1,0 +1,31 @@
+footer {
+  position:fixed; 
+  bottom: 0px; 
+  width: 100%; 
+  text-align: center;
+}
+
+.parameter-description {
+  font-weight: bold;
+  display: inline-block;
+  width: 200px;
+  height: 30px;
+}
+
+.textbox {
+  width: 125px
+}
+
+.textbox-label {
+  font-family: Georgia, serif;
+  text-align: left;
+  font-size: 15px;
+  color:black;
+} 
+
+.radio-label {
+  font-family: Georgia, serif;
+  text-align: left;
+  font-size: 15px;
+  color:black;
+} 

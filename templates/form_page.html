@@ -1,0 +1,140 @@
+<html lang="en" style="background: url(https://p4.wallpaperbetter.com/wallpaper/625/75/696/love-wallpaper-preview.jpg) no-repeat center fixed; background-size: cover">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title font face="Arial" size="20px" color="#FF7A59">Heart Disease Prediction</title>
+  <link rel="stylesheet" type="text/css" href="static/style.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+</head>
+
+<body>
+    
+  <div class="container-fluid">
+        <!-- <div class="" style="background: url(https://p4.wallpaperbetter.com/wallpaper/625/75/696/love-wallpaper-preview.jpg) no-repeat center fixed; background-size: cover"> -->
+          <h1 style="margin-left:20px;">Heart Disease Prediction Page</h1>
+
+          
+           <div class="row">
+            <div class="col-md-6">
+              <h3 style="margin-left:20px;">Please complete the following parameters:</h3>
+              <ul>
+                <form id="GetPrediction">
+                  <li>
+                    <label class="parameter-description">Patient's Age: </label>
+                    <input class="textbox" type="number" name="Age" placeholder="  (Years)" min=0 required>
+                  </li>
+                  <li>
+                    <label class="parameter-description">Gender: </label>
+                    <input class="radio-label" type="radio" name="Gender" value="M" checked>
+                    <label class="radio-label" for="Gender">Male </label>
+                    <input class="radio-label" type="radio" name="Gender" value="F">
+                    <label class="radio-label" for="Gender">Female </label>
+                  </li>
+                  <li>
+                    <label class="parameter-description">Chest Pain Type: </label>
+                    <input class="radio-label" type="radio" name="ChestPainType" value="TA" checked>
+                    <label class="radio-label" for="ChestPainType">Typical Angina </label>
+                    <input class="radio-label" type="radio" name="ChestPainType" value="ATA">
+                    <label class="radio-label" for="ChestPainType">Atypical Angina </label>
+                    <input class="radio-label" type="radio" name="ChestPainType" value="NAP">
+                    <label class="radio-label" for="ChestPainType">Non-anginal Pain </label>
+                    <input class="radio-label" type="radio" name="ChestPainType" value="ASY">
+                    <label class="radio-label" for="ChestPainType">Asymptomatic </label>
+                  </li>
+                  <li>
+                    <label class="parameter-description">Resting Blood Pressure: </label>
+                    <input class="textbox" type="number" name="RestingBP" placeholder="  (mm of Hg)" min=0 required>
+                  </li>                  
+                  <li>              
+                    <label class="parameter-description">Cholesterol: </label>
+                    <input class="textbox" type="number" name="Cholesterol" placeholder="  (mg/deciliter)" min=0 required>
+                  </li>
+                  <li>
+                    <label class="parameter-description">Fasting Blood Sugar: </label>
+                    <input class="radio-label" type="radio" name="FastingBS" value=0 checked>
+                    <label class="radio-label" for="FastingBS">Less than 120 mg/deciliter </label>
+                    <input class="radio-label" type="radio" name="FastingBS" value=1>
+                    <label class="radio-label" for="FastingBS">Greater than 120 mg/deciliter </label>
+                  </li>
+                  <li>
+                    <label class="parameter-description">Resting Electrocardiogram: </label>
+                    <input class="radio-label" type="radio" name="RestingECG" value="Normal" checked>
+                    <label class="radio-label" for="RestingECG">Normal </label>                      
+                    <input class="radio-label" type="radio" name="RestingECG" value="LVH">
+                    <label class="radio-label" for="RestingECG">Left Ventricular Hypertrophy </label>
+                    <input class="radio-label" type="radio" name="RestingECG" value="ST">
+                    <label class="radio-label" for="RestingECG">ST Wave Abnormality </label>
+                  </li>                                                                                  
+                  <li>
+                    <label class="parameter-description">Maximum Heart Rate: </label>
+                    <input class="textbox" type="number" name="MaxHR" placeholder="  (beats/min)" min=0 required>                    
+                  </li>
+                  <li>
+                    <label class="parameter-description">Angina Induced by Exercise: </label>
+                    <input class="radio-label" type="radio" name="ExerciseAngina" value="Y" checked>
+                    <label class="radio-label" for="ExerciseAngina"> Yes </label>                      
+                    <input class="radio-label" type="radio" name="ExerciseAngina" value="N">
+                    <label class="radio-label" for="ExerciseAngina">No </label>
+                  </li>
+                  <li>
+                    <label class="parameter-description">ST Wave Depression: </label>
+                    <input class="textbox" type="number" name="Oldpeak" placeholder="  (oldpeak value)" step=0.1 required>
+                  </li>
+                  <li>
+                    <label class="parameter-description">ST Wave Slope: </label>
+                    <input class="radio-label" type="radio" name="STslope" value="Flat" checked>
+                    <label class="radio-label" for="STslope">Flat </label>
+                    <input class="radio-label" type="radio" name="STslope" value="Up">
+                    <label class="radio-label" for="STslope">Upsloping </label>                      
+                    <input class="radio-label" type="radio" name="STslope" value="Down">
+                    <label class="radio-label" for="STslope">Downsloping </label>                    
+                  </li>  
+                </form>
+              </ul>
+              
+              
+            </div>  
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <!-- <p><a class="btn btn-primary btn-lg" href="/pred" role="button">Predict</a></p> -->
+              <button style="margin-left: 20px;" id="predict-btn" type="submit" form="GetPrediction" formmethod="post" formaction="/pred" class="btn btn-primary btn-lg">Predict</button><br><br>
+              <h3><label style="margin-left:20px"> {{message}} </label></h3>
+              <p style="margin-left:20px"> {{age|default("")}} </p>
+              <p style="margin-left:20px"> {{gender|default("")}} </p>
+              <p style="margin-left:20px"> {{paintype|default("")}} </p>
+              <p style="margin-left:20px"> {{restBP|default("")}} </p>
+              <p style="margin-left:20px"> {{cholesterol|default("")}} </p>
+              <p style="margin-left:20px"> {{bloodsugar|default("")}} </p>
+              <p style="margin-left:20px"> {{ECG|default("")}} </p>
+              <p style="margin-left:20px"> {{HRmax|default("")}} </p>
+              <p style="margin-left:20px"> {{exerciseangina|default("")}} </p>
+              <p style="margin-left:20px"> {{STdepression|default("")}} </p>
+              <p style="margin-left:20px"> {{STslope|default("")}} </p>
+              <h3><label style="margin-left:20px"> {{prediction|default("")}} </label></h3>
+            </div>
+          </div>
+
+        <!-- </div> -->
+
+   </div>
+
+</body>
+
+
+<footer class="footer navbar-fixed-bottom">
+  <div class="two-toned-footer-color"></div>
+    <p class="text-muted text-muted-footer text-center">
+    <b>&copy; 2022 Georgia Tech Data Science and Analytics Bootcamp<br>
+    This website is an academic exercise only and not intended to be used as an actual diagnostic tool. <br>
+    Always consult with a real doctor.
+    </b>
+    </p>
+</footer>
+
+
+</html>
